@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Calendar</title>
+</head>
+<link rel="stylesheet" th:href="@{/css/css.css}">
+<link rel="stylesheet"
+	th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css}">
+<link rel="stylesheet"
+	th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+<link rel="stylesheet"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css}">
+<link rel="stylesheet"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css}">
+
+
+<body>
+	<div class="calendar-container">
+		<div class="calendar-header">
+			<div class="ico-arrow">
+				<a href="javascript:prevCalendar()" data-toggle="tooltip"
+					data-placement="top" title="이전"> <i class="material-icons">
+						chevron_left </i>
+				</a> <a href="javascript:nextCalendar()" data-toggle="tooltip"
+					data-placement="top" title="다음"> <i class="material-icons">
+						chevron_right </i>
+				</a>
+			</div>
+			<div id="yy-mm"></div>
+			<ul class="nav nav-tabs view-tab" id="view" role="tablist">
+				<li class="nav-item"><a class="nav-link active" id="tab-month"
+					data-toggle="tab" href="#month" role="tab" aria-controls="month"
+					aria-selected="true">월</a></li>
+
+			</ul>
+		</div>
+		<div class="tab-content">
+			<div class="tab-pane active show" id="month" role="tabpanel"
+				aria-labelledby="tab-month">
+				<div class="monthly-calendar">
+					<div class="week-day">
+						<div class="day-name">일</div>
+						<div class="day-name">월</div>
+						<div class="day-name">화</div>
+						<div class="day-name">수</div>
+						<div class="day-name">목</div>
+						<div class="day-name">금</div>
+						<div class="day-name">토</div>
+					</div>
+					<div id="monthly">
+						<div class="week">
+							<div class="day">
+								<h3 class="day-label">1</h3>
+
+
+							</div>
+							<div class="day">
+								<h3 class="day-label">2</h3>
+
+							</div>
+							<div class="day">
+								<h3 class="day-label">3</h3>
+
+
+							</div>
+							<div class="day">
+								<h3 class="day-label">4</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">5</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">6</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">7</h3>
+							</div>
+						</div>
+						<div class="week">
+							<div class="day">
+								<h3 class="day-label">8</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">9</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">10</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">11</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">12</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">13</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">14</h3>
+							</div>
+						</div>
+						<div class="week">
+							<div class="day">
+								<h3 class="day-label">15</h3>
+
+
+							</div>
+							<div class="day">
+								<h3 class="day-label">16</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">17</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">18</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">19</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">20</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">21</h3>
+							</div>
+						</div>
+						<div class="week">
+							<div class="day">
+								<h3 class="day-label">22</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">23</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">24</h3>
+
+							</div>
+							<div class="day">
+								<h3 class="day-label">25</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">26</h3>
+
+							</div>
+							<div class="day">
+								<h3 class="day-label">27</h3>
+
+							</div>
+							<div class="day">
+								<h3 class="day-label">28</h3>
+
+							</div>
+						</div>
+						<div class="week">
+							<div class="day">
+								<h3 class="day-label">29</h3>
+							</div>
+							<div class="day">
+								<h3 class="day-label">30</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane" id="day" role="tabpanel"
+				aria-labelledby="tab-day">
+				<div class="daily-calendar">
+					<span class="day-name">3일 화요일</span>
+					<div class="event-consecutive event-start event-end"
+						data-toggle="popover" data-html="true" data-placement="left"
+						data-content='<div class="content-line"><div class="event-consecutive-marking"></div><div class="title"><h5>일정 "+msg[i].qno+"</h5><h7 class="reservation">2019년 9월 15일 – 17일</div>
+        </div><div class="content-line"><i class="material-icons">
+notes
+</i><div class="title"><h7 class="reservation">스케쥴 메모, 설명이 나타납니다.</div>'>연속
+						일정 1</div>
+					<div class="event-consecutive event-start event-end"
+						data-toggle="popover" data-html="true" data-placement="left"
+						data-content='<div class="content-line"><div class="event-consecutive-marking"></div><div class="title"><h5>일정 "+msg[i].qno+"</h5><h7 class="reservation">2019년 9월 15일 – 17일</div>
+        </div><div class="content-line"><i class="material-icons">
+notes
+</i><div class="title"><h7 class="reservation">스케쥴 메모, 설명이 나타납니다.</div>'>연속
+						일정 2</div>
+					<div class="event event-start event-end" data-toggle="popover"
+						data-html="true" data-placement="left"
+						data-content='<div class="content-line"><div class="event-marking"></div><div class="title"><h5>일정 "+msg[i].qno+"</h5><h7 class="reservation">2019년 9월 15일 – 17일<span class="reservation-time">⋅오후 2:00~ 3:00</span></div>
+        </div><div class="content-line"><i class="material-icons">
+notes
+</i><div class="title"><h7 class="reservation">스케쥴 메모, 설명이 나타납니다.</div>'>일반
+						일정 3</div>
+					<div class="event-repeated event-start event-end"
+						data-toggle="popover" data-html="true" data-placement="left"
+						data-content='<div class="content-line"><div class="event-repeated-marking"></div><div class="title"><h5>일정 "+msg[i].qno+"</h5><h7 class="reservation">2019년 9월 15일 – 17일<span class="reservation-time">⋅오후 2:00~ 3:00</span><span class="repeat-message">⋅매월 반복</span></div>
+        </div><div class="content-line"><i class="material-icons">
+notes
+</i><div class="title"><h7 class="reservation">스케쥴 메모, 설명이 나타납니다.</div>'>반복
+						일정 1</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<div class="modal fade" id="registerSchedule" tabindex="-1"
+	role="dialog" aria-labelledby="registerScheduleLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="registerScheduleLabel">일정 만들기</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label class="col-form-label">일정 제목</label> <input type="text"
+							class="form-control" id="recipient-name">
+					</div>
+					<div class="form-group">
+						<label for="message-text" class="col-form-label">일정 설명</label>
+						<textarea class="form-control" id="message-text"></textarea>
+					</div>
+					<div class="form-row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-form-label">일정 시작 날짜</label>
+								<div class="input-group date" id="datetimepicker1"
+									data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input"
+										data-target="#datetimepicker1" id="datetime1" />
+									<div class="input-group-append" data-target="#datetimepicker1"
+										data-toggle="datetimepicker">
+										<div class="input-group-text">
+											<i class="material-icons"> calendar_today </i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-form-label">일정 시작 시간</label>
+								<div class="input-group date" id="datetimepicker2"
+									data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input"
+										data-target="#datetimepicker2" id="stime" />
+									<div class="input-group-append" data-target="#datetimepicker2"
+										data-toggle="datetimepicker">
+										<div class="input-group-text">
+											<i class="material-icons"> access_time </i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-form-label">일정 종료 날짜</label>
+								<div class="input-group date" id="datetimepicker3"
+									data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input"
+										data-target="#datetimepicker3" id="etime" />
+									<div class="input-group-append" data-target="#datetimepicker3"
+										data-toggle="datetimepicker">
+										<div class="input-group-text">
+											<i class="material-icons"> calendar_today </i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-form-label">일정 종료 시간</label>
+								<div class="input-group date" id="datetimepicker4"
+									data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input"
+										data-target="#datetimepicker4" id="datetime2" />
+									<div class="input-group-append" data-target="#datetimepicker4"
+										data-toggle="datetimepicker">
+										<div class="input-group-text">
+											<i class="material-icons"> access_time </i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox"
+								id="repeatCheckbox" value="매월 반복" name="check"> <label
+								class="form-check-label" for="inlineCheckbox1">매월 반복</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox"
+								id="alldayCheckbox" value="하루 종일" name="check"> <label
+								class="form-check-label" for="inlineCheckbox2">하루 종일</label>
+						</div>
+						<h6>최대 3주일까지만 가능합니다.</h6>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-primary" id="create">일정
+					만들기</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+<script>
+	var length
+	var today = new Date()
+	var date = new Date()
+	
+	
+	var title = $("#recipient-name")
+	var content = $("#message-text")
+	var	sdate = $("#datetime1")
+	var	edate = $("#etime")
+	var startTime = $("#stime")
+	var	endTime = $("#datetime2")
+	var Calendar = $("#yy-mm")
+	var todayMonth
+	var todayYear
+	var last
+	function prevCalendar() {
+		today = new Date(today.getFullYear(), today.getMonth() - 1, today
+				.getDate())
+		var lastDate = new Date(today.getFullYear(), today.getMonth()+1, 0)
+		buildCalendar()
+		
+		getData(today)
+		last=lastDate.getDate()
+		
+		
+	}
+
+	function nextCalendar() {
+		
+		today = new Date(today.getFullYear(), today.getMonth() + 1, today
+				.getDate())
+		var lastDate = new Date(today.getFullYear(), today.getMonth()+1, 0)
+		buildCalendar()
+		
+		getData(today)
+		last=lastDate.getDate()
+		
+	}
+
+	function buildCalendar() {
+		var doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+	
+		var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+		
+		
+		
+		var CalendarYM = $("#monthly")
+		
+		Calendar.html('')
+		todayMonth = (today.getMonth() + 1)
+		todayYear = today.getFullYear()
+		var str = "<h4>" + today.getFullYear() + "년 " + todayMonth
+				+ "월</h4>"
+
+		Calendar.append(str)
+
+		CalendarYM.html('')
+
+		var cnt = 0
+		var flag = true
+		var strMon = "<div class='week'>"
+		for (i = 0; i < doMonth.getDay(); i++) {
+			
+			strMon += "<div class='day'><h3 class='day-label'></h3></div>"
+			cnt = cnt + 1
+		}
+
+		length = cnt
+		last = lastDate.getDate()
+		for (i = 1; i <= last; i++) {
+
+			strMon += "<div class='day' id='"+i+"'><h3 class='day-label' >" + i
+					+ "</h3></div>"
+
+			cnt = cnt + 1
+
+			if (cnt % 7 == 0) {
+
+				strMon += "</div>"
+
+				CalendarYM.append(strMon)
+
+				strMon = "<div class='week'>"
+
+			}
+
+			if ((i == lastDate.getDate() ? true : false) && (cnt % 7 != 0)) {
+				strMon += "</div>"
+
+				CalendarYM.append(strMon)
+
+			}
+		}
+
+	}
+
+	buildCalendar()
+	getData(today)
+
+	$(function() {
+		$('[data-toggle="tooltip"]').tooltip()
+	});
+
+	$(function() {
+		$('#view li:first-child a').tab('show')
+	});
+
+	$(function() {
+		$('[data-toggle="popover"]').popover().on('inserted.bs.popover')
+	});
+
+	$('.week, .daily-calendar').click(function() {
+		$('#registerSchedule').modal('show');
+	});
+
+	$(".event-consecutive, .event, .event-repeated").click(function(event) {
+		event.stopPropagation();
+	});
+
+	$(function() {
+		$('#datetimepicker1').datetimepicker({
+			format : 'YYYY-MM-DD'
+		});
+		$('#datetimepicker3').datetimepicker({
+			format : 'YYYY-MM-DD'
+		});
+	});
+
+	$(function() {
+		$('#datetimepicker2').datetimepicker({
+			format : 'HH:mm:ss'
+		});
+		$('#datetimepicker4').datetimepicker({
+			format : 'HH:mm:ss'
+		});
+	});
+
+	$(document).on("click", ".week, .daily-calendar", function() {
+		$('#registerSchedule').modal('show')
+		
+		title.val("")
+		content.val("")
+		sdate.val("")
+		edate.val("")
+		startTime.val("")
+		endTime.val("")
+		
+	})
+
+	$("#create").on("click", function() {
+		
+
+		
+		
+		if(title.val() == "" || content.val() == "" || sdate.val() == "" || edate.val() == ""  ){
+			alert("내용을 입력하여주세요!")
+			return
+		}
+		
+		if(sdate.val() > edate.val()){
+			alert("시작 날짜와 끝 날짜를 확인하여주세요! ")
+			return
+		}
+		
+		
+		
+		saveData()
+		$('#registerSchedule').modal('hide');
+		alert("일정 등록 성공!")
+		buildCalendar()
+		getData(today)
+		
+		
+
+	})
+	
+
+
+	function saveData() {
+
+		var startdate = $("#datetime1").val()
+		var enddate = $("#etime").val()
+
+		var check = $("input[type='checkbox'][id='repeatCheckbox']").is(
+				":checked")
+
+		var alldaycheck = $("input[type='checkbox'][id='alldayCheckbox']").is(
+				":checked")
+
+		var type = startdate === enddate || alldaycheck == true ? "N" : "C"
+
+		var repeat = check == true ? "R" : ""
+
+		var sTime = startTime == "00:00" ? "00:00":startTime.val()
+		var eTime = endTime == "24:00" ? "24:00":endTime.val()
+				
+		var arr = {
+			type : type + repeat,
+			title : title.val(),
+			content : content.val(),
+			startdate : sdate.val(),
+			enddate : edate.val(),
+			startTime : sTime,
+			endTime : eTime,
+			repeattime : check,
+			allday : alldaycheck,
+			inviteaccept : "hello"
+		};
+
+		console.log(arr)
+
+		$.ajax({
+			type : "post",
+			url : "/calender/register",
+			data : JSON.stringify(arr),
+			contentType : "application/json;charset=UTF-8",
+			success : function(msg) {
+				console.log(msg)
+
+			}
+		})
+
+	}
+
+	function getFormatDate(date) {
+		var year = date.getFullYear();
+		var month = (1 + date.getMonth())
+		month = month >= 10 ? month : '0' + month
+		return year + '-' + month
+	}
+
+	function getData(day) {
+
+		var arr = {
+			day : getFormatDate(day)
+
+		};
+
+		console.log(arr)
+
+		
+				$.ajax({
+					type : "post",
+					url : "/calender/list",
+					data : JSON.stringify(arr),
+					contentType : "application/json;charset=UTF-8",
+					success : function(msg) {
+
+						console.log(msg)
+						var count =0;
+						for (var i = 0; i < msg.length; i++) {
+							
+							
+							
+							if (msg[i].startdate.substring(8, 9) == 0)
+								var id = msg[i].startdate.substring(9, 10)
+							else
+								var id = msg[i].startdate.substring(8, 10)
+
+							if (msg[i].type === "N") {
+								str = "<div class='event event-start event-end' data-span='1'  data-trigger='hover' data-toggle='popover'"
+                            +"data-html='true' data-content='' id='N"+count+"'>"
+										+ msg[i].title + "</div>"
+								
+								$('#' + id).append(str)
+						$('#N'+count).attr('data-content', "<div class='content-line'><div class='event-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime+"~"+msg[i].endTime+"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        			count++
+								
+							} else if (msg[i].type === "NR") {
+								str = "<div class='event event-repeated event-start event-end' data-span='1'  data-trigger='hover' data-toggle='popover'"
+                            +"data-html='true' data-content='' id='NR"+count+"'>"
+										+ msg[i].title + "</div>"
+								$('#' + id).append(str)
+								
+								$('#NR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime+"~"+msg[i].endTime+"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		                     count++
+							} else if (msg[i].type === "C") {
+								
+								//msg[i].startdate.substring(5,6)
+								
+								
+								var cut = msg[i].startdate.substring(5,6) == "0" ? msg[i].startdate.substring(6,7): msg[i].startdate.substring(5,7)
+								var st = msg[i].startdate.substring(5,6) == "0" ? "0"+String(todayMonth-1): msg[i].startdate.substring(5,7)		
+									
+								var cutend = msg[i].enddate.substring(5,6) == "0" ? msg[i].enddate.substring(6,7): msg[i].enddate.substring(5,7)
+								var et = msg[i].enddate.substring(5,6) == "0" ? "0"+String(todayMonth-1): msg[i].enddate.substring(5,7)		
+										
+										
+								var startDate = new Date(msg[i].startdate)
+								
+								console.log("start : "+startDate)
+								
+								var endDate = new Date(msg[i].enddate)
+								console.log("end : "+endDate)
+								
+								
+								if(parseInt(cutend)===todayMonth+1){
+									 
+									 endDate = new Date(msg[i].enddate.substring(5,7)== cutend ? String(today.getFullYear())+"-"+String(todayMonth)+"-"+last :msg[i].enddate)
+								}
+										
+								if(parseInt(cut)+1===todayMonth){
+						
+									var startDate = new Date(msg[i].startdate.substring(5,7) == st ? String(today.getFullYear())+"-"+String(todayMonth)+"-01" :msg[i].startdate)
+								}
+								
+								
+								
+								var diffDay = (endDate.getTime() - startDate
+										.getTime())
+										/ (1000 * 60 * 60 * 24) + 1
+								
+								if(parseInt(cut)+1===todayMonth){
+								
+									id = 1
+			
+									
+									str = "<div class='event event-consecutive event-start event-end' data-span='"
+										+ (diffDay)
+										+ "' data-toggle='popover' data-html='true'  data-trigger='hover' data-content='' id='C"+count+"'>"
+										+ msg[i].title + "</div>"
+
+								$('#' + id).append(str)
+								$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+							+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+	       + "</div><div class='content-line'><i class='material-icons'>notes"
+	        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+								count++
+									
+									continue
+								}		
+								
+								if(parseInt(cutend)===todayMonth+1){
+									
+								
+			
+									
+									str = "<div class='event event-consecutive event-start event-end' data-span='"
+										+ (diffDay)
+										+ "' data-toggle='popover' data-html='true'  data-trigger='hover' data-content='' id='C"+count+"'>"
+										+ msg[i].title + "</div>"
+
+								$('#' + id).append(str)
+								$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+							+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+	       + "</div><div class='content-line'><i class='material-icons'>notes"
+	        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+								count++
+									
+									continue
+								}	
+								
+								
+
+								
+								
+								console.log("diff : "+diffDay)
+								console.log("length : "+length)
+								
+								if (id <= (7 - length)) {
+
+									str = "<div class='event event-consecutive event-start event-end' data-span='"
+											+ (7 - length + 1 - parseInt(id))
+											+ "' data-toggle='popover' data-html='true'  data-trigger='hover' data-content='' id='C"+count+"'>"
+											+ msg[i].title + "</div>"
+
+									$('#' + id).append(str)
+									$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+									count++
+									if (diffDay > (7 - length + 1 - parseInt(id))) {
+										
+										
+										str = "<div class='event event-consecutive event-start event-end' data-span='"
+												+ (diffDay - (7 - length + 1 - parseInt(id)))
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+												+ msg[i].title + "</div>"
+
+										$('#' + (7 - length + 1)).append(str)
+										$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+										
+		        				count++
+										
+									}else{
+										str = "<div class='event event-consecutive event-start event-end' data-span='"
+											+ 7
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+											+ msg[i].title + "</div>"
+
+										$('#' + (14 - length + 1)).append(str)
+										$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        						count++
+		        						
+										str = "<div class='event event-consecutive event-start event-end' data-span='"
+											+ (diffDay - (14 - length + 1 - parseInt(id))-7)
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+											+ msg[i].title + "</div>"
+										
+										$('#' + (14 - length + 1)).append(str)
+										$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        
+		        count++
+									}
+											
+								} else if (id <= (14 - length)) {
+
+									str = "<div class='event event-consecutive event-start event-end' data-span='"
+											+ (14 - length + 1 - parseInt(id))
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+											+ msg[i].title + "</div>"
+
+									$('#' + id).append(str)
+									$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									if (diffDay > (14 - length + 1 - parseInt(id))) {
+
+										str = "<div class='event event-consecutive event-start event-end' data-span='"
+												+ (diffDay - (14 - length + 1 - parseInt(id)))
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+												+ msg[i].title + "</div>"
+
+										$('#' + (14 - length + 1)).append(str)
+										$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+				count++
+									}else{
+										str = "<div class='event event-consecutive event-start event-end' data-span='"
+											+ 7
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+											+ msg[i].title + "</div>"
+
+										$('#' + (14 - length + 1)).append(str)
+										$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+										count++
+										str = "<div class='event event-consecutive event-start event-end' data-span='"
+											+ (diffDay - (14 - length + 1 - parseInt(id))-7)
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+											+ msg[i].title + "</div>"
+										
+										$('#' + (21 - length + 1)).append(str)
+										$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+									}
+											
+									
+
+								} else if (id <= (21 - length)) {
+									
+									str = "<div class='event event-consecutive event-start event-end' data-span='"
+											+ (21 - length + 1 - parseInt(id))
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover'  data-content='' id='C"+count+"'>"
+											+ msg[i].title + "</div>"
+
+									$('#' + id).append(str)
+									$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+count++
+									if (diffDay > (21 - length + 1 - parseInt(id))) {
+										
+										if((diffDay - (21 - length + 1 - parseInt(id)))<=7){
+										str = "<div class='event event-consecutive event-start event-end' data-span='"
+												+ (diffDay - (21 - length + 1 - parseInt(id)))
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+												+ msg[i].title + "</div>"
+
+										$('#' + (21 - length + 1)).append(str)
+										$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+										}else{
+											str = "<div class='event event-consecutive event-start event-end' data-span='"
+												+ 7
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+												+ msg[i].title + "</div>"
+
+											$('#' + (21 - length + 1)).append(str)
+											$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+											
+											str = "<div class='event event-consecutive event-start event-end' data-span='"
+												+ (diffDay - (21 - length + 1 - parseInt(id))-7)
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+												+ msg[i].title + "</div>"
+											
+											$('#' + (28 - length + 1)).append(str)
+											$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+										}
+									}
+
+								} else if (id <= (28 - length)) {
+									
+									str = "<div class='event event-consecutive event-start event-end' data-span='"
+											+ (28 - length + 1 - parseInt(id))
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+											+ msg[i].title + "</div>"
+
+									$('#' + id).append(str)
+									$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									if (diffDay > (28 - length + 1 - parseInt(id))) {
+										
+										str = "<div class='event event-consecutive event-start event-end' data-span='"
+												+ (last-28+length-1+1)
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+												+ msg[i].title + "</div>"
+
+										$('#' + (28 - length + 1)).append(str)
+										$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									}
+								} 
+								else {
+									
+									str = "<div class='event event-consecutive event-start event-end' data-span='"
+											+ (last-28+length-1+1)
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='C"+count+"'>"
+											+ msg[i].title + "</div>"
+
+									$('#' + id).append(str)
+									$('#C'+count).attr('data-content', "<div class='content-line'><div class='event-consecutive-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									
+
+								}
+
+							}
+							else if (msg[i].type === "CR") {
+								var cut = msg[i].startdate.substring(5,6) == "0" ? msg[i].startdate.substring(6,7): msg[i].startdate.substring(5,7)
+										var st = msg[i].startdate.substring(5,6) == "0" ? "0"+String(todayMonth-1): msg[i].startdate.substring(5,7)		
+											
+										var cutend = msg[i].enddate.substring(5,6) == "0" ? msg[i].enddate.substring(6,7): msg[i].enddate.substring(5,7)
+										var et = msg[i].enddate.substring(5,6) == "0" ? "0"+String(todayMonth-1): msg[i].enddate.substring(5,7)		
+												
+												
+										var startDate = new Date(msg[i].startdate)
+										
+										console.log("start : "+startDate)
+										
+										var endDate = new Date(msg[i].enddate)
+										console.log("end : "+endDate)
+										
+										
+										if(parseInt(cutend)===todayMonth+1){
+											 
+											 endDate = new Date(msg[i].enddate.substring(5,7)== cutend ? String(today.getFullYear())+"-"+String(todayMonth)+"-"+last :msg[i].enddate)
+										}
+												
+										if(parseInt(cut)+1===todayMonth){
+											id=1
+											var startDate = new Date(msg[i].startdate.substring(5,7) == st ? String(today.getFullYear())+"-"+String(todayMonth)+"-01" :msg[i].startdate)
+										}
+										
+										
+										
+
+								var diffDay = (endDate.getTime() - startDate
+										.getTime())
+										/ (1000 * 60 * 60 * 24) + 1
+								console.log("diffDay" + diffDay)
+
+
+								if(parseInt(cut)+1===todayMonth){
+									
+									id = 1
+			
+									str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+										+ (diffDay)
+										+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+										+ msg[i].title + "</div>"
+
+								$('#' + id).append(str)
+								$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+							+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+	       + "</div><div class='content-line'><i class='material-icons'>notes"
+	        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+	        count++
+									
+									continue
+								}		
+								
+								if(parseInt(cutend)===todayMonth+1){
+									
+								
+			
+									
+									str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+										+ (diffDay)
+										+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+										+ msg[i].title + "</div>"
+
+								$('#' + id).append(str)
+								$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+							+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+	       + "</div><div class='content-line'><i class='material-icons'>notes"
+	        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+	        count++
+									
+									continue
+								}	
+								
+								
+								
+								if (id <= (7 - length)) {
+
+									str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ (7 - length + 1 - parseInt(id))
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+
+									$('#' + id).append(str)
+									$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									if (diffDay > (7 - length + 1 - parseInt(id))) {
+										
+										
+										str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+												+ (diffDay - (7 - length + 1 - parseInt(id)))
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+												+ msg[i].title + "</div>"
+
+										$('#' + (7 - length + 1)).append(str)
+																	$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+										
+										
+										
+									}else{
+										str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ 7
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+
+										$('#' + (14 - length + 1)).append(str)
+										$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+										count++
+										str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ (diffDay - (14 - length + 1 - parseInt(id))-7)
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+										
+										$('#' + (14 - length + 1)).append(str)
+										$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+									}
+								} else if (id <= (14 - length)) {
+
+									str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ (14 - length + 1 - parseInt(id))
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+
+									$('#' + id).append(str)
+									
+																	$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+							count++
+									if (diffDay > (14 - length + 1 - parseInt(id))) {
+
+										str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+												+ (diffDay - (14 - length + 1 - parseInt(id)))
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+												+ msg[i].title + "</div>"
+
+										$('#' + (14 - length + 1)).append(str)
+																	$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									}else{
+										str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ 7
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+
+										$('#' + (14 - length + 1)).append(str)
+																	$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+										
+										str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ (diffDay - (14 - length + 1 - parseInt(id))-7)
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+										
+										$('#' + (21 - length + 1)).append(str)
+																	$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+									}
+											
+									
+
+								} else if (id <= (21 - length)) {
+									
+									str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ (21 - length + 1 - parseInt(id))
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+
+									$('#' + id).append(str)
+																$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									if (diffDay > (21 - length + 1 - parseInt(id))) {
+										
+										if((diffDay - (21 - length + 1 - parseInt(id)))<=7){
+										str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+												+ (diffDay - (21 - length + 1 - parseInt(id)))
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+												+ msg[i].title + "</div>"
+
+										$('#' +(21 - length + 1)).append(str)
+																	$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+										}else{
+											str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+												+ 7
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+												+ msg[i].title + "</div>"
+
+											$('#' + (21 - length + 1)).append(str)
+																		$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+											
+											str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+												+ (diffDay - (21 - length + 1 - parseInt(id))-7)
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+ count+"'>"
+												+ msg[i].title + "</div>"
+											
+											$('#' + (28 - length + 1)).append(str)
+																		$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+										}
+									}
+
+								} else if (id <= (28 - length)) {
+
+									str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ (28 - length + 1 - parseInt(id))
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+
+									$('#' + id).append(str)
+																$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									if (diffDay > (28 - length + 1 - parseInt(id))) {
+
+										str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+												+ (last-28+length-1+1)
+												+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+												+ msg[i].title + "</div>"
+
+										$('#' + (28 - length + 1)).append(str)
+																	$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									}else{
+										str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ (last-28+length-1+1)
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+
+										$('#' + (28 - length + 1)).append(str)
+																	$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+										
+							
+									}
+								} else {
+
+									str = "<div class='event event-repeated event-consecutive event-start event-end' data-span='"
+											+ (last-28+length-1+1)
+											+ "' data-toggle='popover' data-html='true' data-trigger='hover' data-content='' id='CR"+count+"'>"
+											+ msg[i].title + "</div>"
+
+										$('#' + id).append(str)
+																	$('#CR'+count).attr('data-content', "<div class='content-line'><div class='event-repeated-marking'></div><div class="
+								+ msg[i].title + "><h5>일정 "+msg[i].qno+"</h5><h7 class='reservation'>"+msg[i].startdate +"~"+ msg[i].enddate +"<br><span class='reservation-time'>"+msg[i].startTime +"~"+ msg[i].endTime +"</span></div>"
+		       + "</div><div class='content-line'><i class='material-icons'>notes"
+		        +"</i><div class='title'><h7 class='reservation'>"+msg[i].content+"</div> ")
+		        count++
+
+									
+									}
+
+							}
+
+						
+
+						}
+
+					}
+				})
+
+	}
+	
+	
+	$("input[type='checkbox'][id='alldayCheckbox']").change(function() {
+		
+		
+	
+		
+		if($("#datetime2").css("display") == "block"){   
+	        $('#datetime2').css("display","none")   
+	        $('#stime').css("display", "none")
+	        startTime = "00:00" 
+	        endTime = "24:00"
+	    } else if($("#datetime2").css("display") == "none"){  
+	        $('#datetime2').css("display", "block")
+	        $('#stime').css("display", "block")
+	    }  
+
+
+	
+	    
+	    
+	   
+	});
+	
+	$("input[type='checkbox'][id='repeatCheckbox']").change(function() {
+		
+		
+		if($("#datetime2").css("display") == "none"){   
+	        $('#datetime2').css("display","block");   
+	        $('#stime').css("display", "block");
+	    
+	    }  
+
+		
+		
+	    
+	    
+	   
+	})
+	
+
+	$(document).ready(
+			function() {
+				$('input[type="checkbox"][name="check"]').click(
+						function() {
+							//click 이벤트가 발생했는지 체크
+							if ($(this).prop('checked')) {
+								//checkbox 전체를 checked 해제후 click한 요소만 true지정
+								$('input[type="checkbox"][name="check"]').prop(
+										'checked', false);
+								$(this).prop('checked', true);
+							}
+						});
+			})
+</script>
+</html>
